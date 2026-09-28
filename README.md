@@ -98,8 +98,9 @@ hf download shim0114/VIF-Bench --repo-type dataset --local-dir ./data
 data/
 ├── metadata.jsonl                   # one row per task (start here)
 ├── tasks/
-│   ├── v1/<task>/                   # 41 tasks
-│   └── v6/<task>/                   # 1,200 tasks
+│   ├── v1_000/                      # one folder per task, named by its id
+│   ├── ...
+│   └── v6_n2_00/
 │       ├── Image_0.png ...          # references and visual-instruction images, in input order
 │       ├── instruction.txt          # text instruction
 │       ├── layout.json              # role of each image and the layout boxes
@@ -126,7 +127,7 @@ pip install -r requirements.txt
 
 For each task, give your model the images `Image_0 ... Image_N` (the `images` list of
 `metadata.jsonl`, in order) together with the text instruction, and save the output as
-`generations/<model_name>/<version>/<task>.png` (e.g. `generations/my_model/v6/n2_00.png`).
+`generations/<model_name>/<task_id>.png` (e.g. `generations/my_model/v6_n2_00.png`).
 
 ```python
 import json
@@ -136,7 +137,7 @@ for line in open("data/metadata.jsonl"):
     images = [f"data/{im['file']}" for im in task["images"]]   # Image_0, Image_1, ... in order
     instruction = task["instruction"]
     # output = your_model(images, instruction)
-    # output.save(f"generations/my_model/{task['id']}.png")      # task['id'] = "v6/n2_00"
+    # output.save(f"generations/my_model/{task['id']}.png")      # task['id'] = "v6_n2_00"
 ```
 
 ## 🧪 Evaluation
@@ -166,7 +167,7 @@ python judge.py --data_dir ./data --generated_dir ./generations/my_model --judge
 python qwenvl_judge.py --data_dir ./data --generated_dir ./generations/my_model
 ```
 
-Responses are saved to `results/<model_name>/<judge>/responses/<version>/<task>.txt` and the
+Responses are saved to `results/<model_name>/<judge>/responses/<task_id>.txt` and the
 parsed scores to `results/<model_name>/<judge>/scores.jsonl`. Interrupted runs can be resumed by
 running the same command again.
 Qwen3-VL can also be served with an OpenAI-compatible server such as vLLM:

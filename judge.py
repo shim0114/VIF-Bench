@@ -8,7 +8,7 @@ Example:
   python judge.py --data_dir ./data --generated_dir ./generations/my_model --judge gpt
   python judge.py --data_dir ./data --generated_dir ./generations/my_model --judge gemini
 
-Each response is saved to results/<model_name>/<judge>/responses/<version>/<task>.txt and the
+Each response is saved to results/<model_name>/<judge>/responses/<task_id>.txt and the
 parsed scores to results/<model_name>/<judge>/scores.jsonl. Re-running skips tasks that already
 have a valid response, so an interrupted run can simply be restarted.
 """
@@ -105,13 +105,13 @@ def judge_task(task, generated, judge, out_path, max_retries):
 def main():
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     ap.add_argument("--data_dir", required=True, help="VIF-Bench dataset root (contains metadata.jsonl and tasks/)")
-    ap.add_argument("--generated_dir", required=True, help="directory with <version>/<task>.png generated images")
+    ap.add_argument("--generated_dir", required=True, help="directory with <task_id>.png generated images")
     ap.add_argument("--judge", required=True, choices=sorted(JUDGES))
     ap.add_argument("--model_name", default=None, help="name used in the output path (default: generated_dir name)")
     ap.add_argument("--output_dir", default="results")
     ap.add_argument("--subset", default="all", choices=["all", "vi_vs_ti"],
                     help="vi_vs_ti = the 200 tasks used for the visual- vs text-instruction comparison")
-    ap.add_argument("--tasks", nargs="*", default=None, help="evaluate only these task ids, e.g. v6/n2_00")
+    ap.add_argument("--tasks", nargs="*", default=None, help="evaluate only these task ids, e.g. v6_n2_00")
     ap.add_argument("--workers", type=int, default=8)
     ap.add_argument("--max_retries", type=int, default=5)
     ap.add_argument("--overwrite", action="store_true")

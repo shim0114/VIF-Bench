@@ -10,7 +10,7 @@ No API key is needed. Two backends:
 Example:
   python qwenvl_judge.py --data_dir ./data --generated_dir ./generations/my_model
 
-Outputs follow judge.py: results/<model_name>/qwen3vl/responses/<version>/<task>.txt and
+Outputs follow judge.py: results/<model_name>/qwen3vl/responses/<task_id>.txt and
 results/<model_name>/qwen3vl/scores.jsonl. Decoding is greedy for reproducibility.
 """
 import argparse
@@ -82,11 +82,11 @@ class ServerJudge:
 def main():
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     ap.add_argument("--data_dir", required=True, help="VIF-Bench dataset root (contains metadata.jsonl and tasks/)")
-    ap.add_argument("--generated_dir", required=True, help="directory with <version>/<task>.png generated images")
+    ap.add_argument("--generated_dir", required=True, help="directory with <task_id>.png generated images")
     ap.add_argument("--model_name", default=None, help="name used in the output path (default: generated_dir name)")
     ap.add_argument("--output_dir", default="results")
     ap.add_argument("--subset", default="all", choices=["all", "vi_vs_ti"])
-    ap.add_argument("--tasks", nargs="*", default=None, help="evaluate only these task ids, e.g. v6/n2_00")
+    ap.add_argument("--tasks", nargs="*", default=None, help="evaluate only these task ids, e.g. v6_n2_00")
     ap.add_argument("--judge_model", default=DEFAULT_MODEL, help=f"HF model id (default: {DEFAULT_MODEL})")
     ap.add_argument("--api_base", default=None, help="OpenAI-compatible endpoint, e.g. http://localhost:8000/v1")
     ap.add_argument("--attn_implementation", default=None, help='e.g. "flash_attention_2" (transformers backend)')

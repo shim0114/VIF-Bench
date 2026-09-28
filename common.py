@@ -19,7 +19,7 @@ IMAGE_EXTS = (".png", ".jpg", ".jpeg", ".webp")
 def load_tasks(data_dir, subset="all", task_ids=None):
     """Read metadata.jsonl of the dataset.
 
-    Returns a list of dicts: id ("v6/n2_00"), images (paths of Image_0 ... Image_N in the order
+    Returns a list of dicts: id ("v6_n2_00"), images (paths of Image_0 ... Image_N in the order
     given to the generator), instruction, and the raw metadata row.
     """
     data_dir = Path(data_dir)
@@ -42,7 +42,7 @@ def load_tasks(data_dir, subset="all", task_ids=None):
 
 
 def find_generated(generated_dir, task_id):
-    """Generated image of a task: <generated_dir>/<version>/<task>.{png,jpg,jpeg,webp}."""
+    """Generated image of a task: <generated_dir>/<task_id>.{png,jpg,jpeg,webp}."""
     base = Path(generated_dir) / task_id
     for ext in IMAGE_EXTS:
         p = base.with_suffix(ext)
