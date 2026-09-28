@@ -36,19 +36,28 @@ this joint setting, covering:
 
 ## 🥇 Leaderboard
 
-Each generated image is scored on a 10-point scale along six criteria. The main score is the
-average of **GPT-5** and **Gemini 2.5 Flash** as judges. We also report scores with
-**Qwen3-VL-32B-Instruct**, a fixed-version open-weight judge, so that VIF-Bench can be evaluated
-without proprietary APIs.
+<p align="center">
+  <img src="assets/leaderboard.png" alt="VIF-Bench leaderboard" width="800">
+</p>
+
+Each generated image is scored on a 10-point scale along six criteria, and models are ranked by
+their average. The main score uses **GPT-5** and **Gemini 2.5 Flash** as judges (the average of the
+two); **Qwen3-VL-32B-Instruct** is a fixed-version open-weight judge that lets you evaluate without
+proprietary APIs.
+
+<details>
+<summary><b>Scores per criterion</b></summary>
 
 **GPT-5 + Gemini 2.5 Flash**
 
 | Model | Text Instruction Following | Reference Consistency | Visual Instruction Adherence | Visual Instruction Cleanliness | Scene Coherence | Visual Quality | Avg. |
-|---|---|---|---|---|---|---|---|
+|---|:---:|:---:|:---:|:---:|:---:|:---:|:---:|
 | GPT-Image-1.5 | 6.79 | 8.12 | 4.57 | 9.39 | 7.84 | 8.88 | **7.60** |
-| GPT-Image-1 | 6.51 | 7.84 | 4.35 | 9.69 | 7.99 | 8.90 | 7.55 |
-| Nano Banana | 6.40 | 8.39 | 5.23 | 7.09 | 7.13 | 8.55 | 7.13 |
-| Nano Banana Pro | 6.07 | 8.27 | 5.67 | 6.27 | 7.01 | 8.48 | 6.96 |
+| ↳ + multi-step | 6.53 | 7.29 | 4.43 | **9.80** | **8.24** | 8.89 | 7.53 |
+| GPT-Image-1 | 6.51 | 7.84 | 4.35 | 9.69 | 7.99 | **8.90** | 7.55 |
+| Nano Banana | 6.40 | **8.39** | 5.23 | 7.09 | 7.13 | 8.55 | 7.13 |
+| Nano Banana Pro | 6.07 | 8.27 | **5.67** | 6.27 | 7.01 | 8.48 | 6.96 |
+| ↳ + multi-step | **6.85** | 7.37 | 5.09 | 8.37 | 8.03 | 8.69 | 7.40 |
 | Qwen-Image-Edit-2511 | 3.01 | 3.38 | 2.50 | 7.78 | 5.62 | 7.33 | 4.94 |
 | DreamOmni2 | 2.86 | 3.88 | 2.32 | 5.57 | 5.33 | 7.86 | 4.64 |
 | FLUX.1 Kontext | 2.90 | 4.04 | 2.38 | 5.16 | 5.25 | 7.91 | 4.61 |
@@ -57,15 +66,22 @@ without proprietary APIs.
 **Qwen3-VL-32B-Instruct**
 
 | Model | Text Instruction Following | Reference Consistency | Visual Instruction Adherence | Visual Instruction Cleanliness | Scene Coherence | Visual Quality | Avg. |
-|---|---|---|---|---|---|---|---|
-| GPT-Image-1.5 | 8.27 | 9.34 | 7.90 | 9.48 | 8.87 | 9.74 | **8.93** |
-| GPT-Image-1 | 8.01 | 9.27 | 7.40 | 9.81 | 8.95 | 9.72 | 8.86 |
-| Nano Banana | 7.62 | 9.48 | 7.76 | 7.46 | 7.93 | 9.52 | 8.29 |
+|---|:---:|:---:|:---:|:---:|:---:|:---:|:---:|
+| GPT-Image-1.5 | **8.27** | 9.34 | **7.90** | 9.48 | 8.87 | **9.74** | **8.93** |
+| ↳ + multi-step | 7.88 | 8.75 | 7.19 | **9.85** | 8.85 | 9.69 | 8.70 |
+| GPT-Image-1 | 8.01 | 9.27 | 7.40 | 9.81 | **8.95** | 9.72 | 8.86 |
+| Nano Banana | 7.62 | **9.48** | 7.76 | 7.46 | 7.93 | 9.52 | 8.29 |
 | Nano Banana Pro | 7.34 | 9.30 | 7.74 | 6.60 | 7.69 | 9.46 | 8.02 |
+| ↳ + multi-step | 7.58 | 8.51 | 7.08 | 8.42 | 8.43 | 9.55 | 8.26 |
 | Qwen-Image-Edit-2511 | 4.21 | 4.93 | 3.02 | 7.65 | 5.08 | 8.75 | 5.61 |
 | FLUX.1 Kontext | 4.57 | 5.74 | 3.63 | 5.30 | 4.65 | 8.73 | 5.44 |
 | DreamOmni2 | 4.36 | 5.45 | 3.42 | 5.72 | 4.55 | 8.61 | 5.35 |
 | Qwen-Image-Edit-2509 | 3.21 | 3.64 | 2.59 | 6.76 | 3.37 | 5.54 | 4.19 |
+
+`↳ + multi-step`: agentic generation in which GPT-5 splits the task into 2–4 sub-tasks and the
+generator is called once per sub-task. Bold marks the best score in each column.
+
+</details>
 
 ## 📦 Dataset
 
@@ -191,7 +207,8 @@ category (Main Reference, Sub Reference or Scene Context).
 
 ## 📄 License
 
-Creative Commons Attribution Non Commercial 4.0
+This repository and the VIF-Bench dataset are released under the
+[Creative Commons Attribution-NonCommercial 4.0 International](LICENSE) license (CC BY-NC 4.0).
 
 ## 🙏 Acknowledgement
 
