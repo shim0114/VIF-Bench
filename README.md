@@ -9,7 +9,7 @@
     <a href="#">
       <img alt="arXiv paper" src="https://img.shields.io/badge/arXiv-coming%20soon-b31b1b.svg">
     </a>
-    <a href="https://huggingface.co/datasets/HF_ORG/VIF-Bench">
+    <a href="https://huggingface.co/datasets/shim0114/VIF-Bench">
         <img alt="Dataset" src="https://img.shields.io/badge/🤗 Dataset-VIF--Bench-yellow.svg">
     </a>
 </p>
@@ -69,10 +69,10 @@ without proprietary APIs.
 
 ## 📦 Dataset
 
-Download the dataset from [Hugging Face](https://huggingface.co/datasets/HF_ORG/VIF-Bench):
+Download the dataset from [Hugging Face](https://huggingface.co/datasets/shim0114/VIF-Bench):
 
 ```bash
-git clone https://huggingface.co/datasets/HF_ORG/VIF-Bench ./data
+git clone https://huggingface.co/datasets/shim0114/VIF-Bench ./data
 ```
 
 ```
@@ -94,7 +94,7 @@ data/
 ## 🛠️ Setup
 
 ```bash
-git clone git@github.com:matsuolab/vif-bench.git
+git clone https://github.com/shim0114/vif-bench.git
 cd vif-bench
 
 conda create -n vifbench python=3.12
