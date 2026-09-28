@@ -1,0 +1,14 @@
+# secrets
+.env
+.env.*
+!.env.example
+
+# data / outputs
+data/
+generations/
+results/
+
+# python
+__pycache__/
+*.py[cod]
+.venv/

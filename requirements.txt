@@ -1,0 +1,9 @@
+google-genai
+openai
+pillow
+python-dotenv
+tqdm
+# only for qwenvl_judge.py (transformers backend)
+torch
+transformers>=4.57.0
+accelerate
