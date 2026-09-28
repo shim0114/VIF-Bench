@@ -123,20 +123,32 @@ conda activate vifbench
 pip install -r requirements.txt
 ```
 
+API keys are needed for the API image models and the GPT-5 / Gemini judges. Copy `.env.example` to
+`.env` and set your own keys (`.env` is git-ignored; never commit it):
+
+```
+OPENAI_API_KEY=...
+GEMINI_API_KEY=...
+```
+
 ## 🎨 Generation
 
-For each task, give your model the task images and the text instruction, and save the output as
-`generations/<model_name>/<task_id>.png` (e.g. `generations/my_model/v6_n2_00.png`).
+Generate with the API models evaluated in the paper (`gemini-3-pro-image-preview`,
+`gemini-3.1-flash-image-preview`, `gpt-image-1.5`, `gpt-image-1`):
+
+```bash
+python generate.py --data_dir ./data --model nano_banana_pro   # or nano_banana, gpt_image_1_5, gpt_image_1
+```
+
+Outputs are saved as `generations/<model>/<task_id>.png`. To evaluate your own model, save its
+outputs in the same layout, e.g.:
 
 ```python
-import json
+from common import load_tasks
 
-for line in open("data/metadata.jsonl"):
-    task = json.loads(line)
-    images = [f"data/{im['file']}" for im in task["images"]]   # Image_0, Image_1, ...
-    instruction = task["instruction"]
-    # output = your_model(images, instruction)
-    # output.save(f"generations/my_model/{task['id']}.png")      # task['id'] = "v6_n2_00"
+for task in load_tasks("./data"):
+    output = your_model(task["images"], task["instruction"])
+    output.save(f"generations/my_model/{task['id']}.png")      # task['id'] = "v6_n2_00"
 ```
 
 ## 🧪 Evaluation
@@ -145,15 +157,7 @@ We use `gpt-5-2025-08-07` via the OpenAI SDK, `gemini-2.5-flash` via the Google 
 `Qwen/Qwen3-VL-32B-Instruct` via Hugging Face Transformers. All three judges receive the same
 prompt ([`prompts.py`](prompts.py)).
 
-For the API judges, copy `.env.example` to `.env` and set your own keys
-(`.env` is git-ignored; never commit it):
-
-```
-OPENAI_API_KEY=...
-GEMINI_API_KEY=...
-```
-
-Run
+The API judges use the keys set in `.env` (see Setup). Run
 
 ```bash
 # GPT-5
@@ -199,9 +203,9 @@ Use `--by conflict` in `summarize.py` to compare conflict and no-conflict tasks.
 
 **Text-converted instructions.** `text_instruction/{dense,medium,sparse}.jsonl` convert every visual
 instruction into text at three levels of specificity; the visual-instruction images are removed and
-the remaining references are renumbered (`images` lists them in their new order). To evaluate
-outputs generated from these instructions, run the judges exactly as above: the judge always
-compares against the original visual-instruction task. The paper uses the 200 tasks marked
+the remaining references are renumbered (`images` lists them in their new order). Generate from them with
+`python generate.py --data_dir ./data --model <model> --instruction dense` (or `medium` / `sparse`) and evaluate the
+outputs exactly as above: the judge always compares against the original visual-instruction task. The paper uses the 200 tasks marked
 `in_vi_vs_ti_experiment` (`--subset vi_vs_ti`).
 
 **Source of reference images.** Each image entry of `metadata.jsonl` records whether it is a real
