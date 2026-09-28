@@ -94,8 +94,8 @@ data/
 ## 🛠️ Setup
 
 ```bash
-git clone https://github.com/shim0114/vif-bench.git
-cd vif-bench
+git clone https://github.com/shim0114/VIF-Bench.git
+cd VIF-Bench
 
 conda create -n vifbench python=3.12
 conda activate vifbench
