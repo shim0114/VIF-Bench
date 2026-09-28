@@ -15,100 +15,50 @@
 </p>
 
 <p align="center">
-  <img src="assets/task_example.png" alt="VIF-Bench task examples" width="800">
+  <img src="assets/task_example.png" alt="Task Example" width="800">
 </p>
 
-Recent image generation models can take multiple images and textual instructions as input,
-enabling reference-based generation guided not only by text but also by **visual instructions**
-such as layouts, arrows and pose cues. VIF-Bench is a benchmark of **1,241 tasks** that evaluates
-this joint setting, covering:
-
-- **multi-reference generation** (up to 7 references) under **multiple heterogeneous visual
-  instructions** (up to 6),
-- cases where reference images can **potentially compete with visual instructions**
-  (e.g., a strongly posed subject vs. a target pose), and
-- a controlled comparison of **visual instructions with text descriptions** at different levels of
-  specificity.
-
-<p align="center">
-  <img src="assets/benchmark_overview.png" alt="Reference categories and visual instructions" width="800">
-</p>
+VIF-Bench evaluates how well image generation models follow **visual instructions** (layouts,
+3D orientations, light and wind arrows, and poses) while composing **multiple reference images**.
+It covers multi-reference generation (up to 7 references) under **multiple heterogeneous visual
+instructions** (up to 6), cases where reference images **potentially compete with visual
+instructions** (e.g., a strongly posed subject vs. a target pose), and a controlled comparison of
+**visual and text instructions**.
 
 ## 🥇 Leaderboard
 
+VIF-Bench comprises **1,241 tasks** designed to evaluate visual instruction following in
+multi-reference image generation. We report the average of six criteria scored by **GPT-5** and
+**Gemini 2.5 Flash**, together with the scores of **Qwen3-VL-32B-Instruct**, a fixed, open-weight
+judge model.
+
 <p align="center">
-  <img src="assets/leaderboard.png" alt="VIF-Bench leaderboard" width="800">
+    <img src="assets/leaderboard.png" alt="Leaderboard" width="800">
 </p>
-
-Each generated image is scored on a 10-point scale along six criteria, and models are ranked by
-their average. The main score uses **GPT-5** and **Gemini 2.5 Flash** as judges (the average of the
-two); **Qwen3-VL-32B-Instruct** is a fixed-version open-weight judge that lets you evaluate without
-proprietary APIs.
-
-<details>
-<summary><b>Scores per criterion</b></summary>
-
-**GPT-5 + Gemini 2.5 Flash**
-
-| Model | Text Instruction Following | Reference Consistency | Visual Instruction Adherence | Visual Instruction Cleanliness | Scene Coherence | Visual Quality | Avg. |
-|---|:---:|:---:|:---:|:---:|:---:|:---:|:---:|
-| GPT-Image-1.5 | 6.79 | 8.12 | 4.57 | 9.39 | 7.84 | 8.88 | **7.60** |
-| ↳ + multi-step | 6.53 | 7.29 | 4.43 | **9.80** | **8.24** | 8.89 | 7.53 |
-| GPT-Image-1 | 6.51 | 7.84 | 4.35 | 9.69 | 7.99 | **8.90** | 7.55 |
-| Nano Banana | 6.40 | **8.39** | 5.23 | 7.09 | 7.13 | 8.55 | 7.13 |
-| Nano Banana Pro | 6.07 | 8.27 | **5.67** | 6.27 | 7.01 | 8.48 | 6.96 |
-| ↳ + multi-step | **6.85** | 7.37 | 5.09 | 8.37 | 8.03 | 8.69 | 7.40 |
-| Qwen-Image-Edit-2511 | 3.01 | 3.38 | 2.50 | 7.78 | 5.62 | 7.33 | 4.94 |
-| DreamOmni2 | 2.86 | 3.88 | 2.32 | 5.57 | 5.33 | 7.86 | 4.64 |
-| FLUX.1 Kontext | 2.90 | 4.04 | 2.38 | 5.16 | 5.25 | 7.91 | 4.61 |
-| Qwen-Image-Edit-2509 | 2.54 | 2.85 | 2.31 | 6.89 | 4.31 | 4.68 | 3.93 |
-
-**Qwen3-VL-32B-Instruct**
-
-| Model | Text Instruction Following | Reference Consistency | Visual Instruction Adherence | Visual Instruction Cleanliness | Scene Coherence | Visual Quality | Avg. |
-|---|:---:|:---:|:---:|:---:|:---:|:---:|:---:|
-| GPT-Image-1.5 | **8.27** | 9.34 | **7.90** | 9.48 | 8.87 | **9.74** | **8.93** |
-| ↳ + multi-step | 7.88 | 8.75 | 7.19 | **9.85** | 8.85 | 9.69 | 8.70 |
-| GPT-Image-1 | 8.01 | 9.27 | 7.40 | 9.81 | **8.95** | 9.72 | 8.86 |
-| Nano Banana | 7.62 | **9.48** | 7.76 | 7.46 | 7.93 | 9.52 | 8.29 |
-| Nano Banana Pro | 7.34 | 9.30 | 7.74 | 6.60 | 7.69 | 9.46 | 8.02 |
-| ↳ + multi-step | 7.58 | 8.51 | 7.08 | 8.42 | 8.43 | 9.55 | 8.26 |
-| Qwen-Image-Edit-2511 | 4.21 | 4.93 | 3.02 | 7.65 | 5.08 | 8.75 | 5.61 |
-| FLUX.1 Kontext | 4.57 | 5.74 | 3.63 | 5.30 | 4.65 | 8.73 | 5.44 |
-| DreamOmni2 | 4.36 | 5.45 | 3.42 | 5.72 | 4.55 | 8.61 | 5.35 |
-| Qwen-Image-Edit-2509 | 3.21 | 3.64 | 2.59 | 6.76 | 3.37 | 5.54 | 4.19 |
-
-`↳ + multi-step`: agentic generation in which GPT-5 splits the task into 2–4 sub-tasks and the
-generator is called once per sub-task. Bold marks the best score in each column.
-
-</details>
 
 ## 📦 Dataset
 
-Download the dataset from [Hugging Face](https://huggingface.co/datasets/shim0114/VIF-Bench):
-
-```bash
-hf download shim0114/VIF-Bench --repo-type dataset --local-dir ./data
-```
-
-(`hf` is the Hugging Face CLI installed with `huggingface_hub`. `git clone` also works if
-[Git LFS](https://git-lfs.com) is installed; without it the images are downloaded as LFS pointer files.)
+The data structure at the [Hugging Face dataset](https://huggingface.co/datasets/shim0114/VIF-Bench) is as follows.
 
 ```
 data/
-├── metadata.jsonl                   # one row per task (start here)
+├── metadata.jsonl          # one row per task
 ├── tasks/
-│   ├── v1_000/                      # one folder per task, named by its id
-│   ├── ...
-│   └── v6_n2_00/
-│       ├── Image_0.png ...          # references and visual-instruction images, in input order
-│       ├── instruction.txt          # text instruction
-│       ├── layout.json              # role of each image and the layout boxes
-│       ├── hierarchy.json           # main / sub references and scene context
-│       ├── orientations.json        # (orientation tasks) target yaw / pitch
-│       └── arrows.json              # (light / wind tasks) arrow start / end points
-├── text_instruction/{dense,medium,sparse}.jsonl
-└── labels/vi_conflicts.jsonl
+│   ├── v6_n2_00/
+│   │   ├── Image_0.png
+│   │   ├── Image_1.jpg
+│   │   ├── ...
+│   │   └── instruction.txt
+│   └── ...
+├── text_instruction/       # dense.jsonl / medium.jsonl / sparse.jsonl
+└── labels/
+    └── vi_conflicts.jsonl
+```
+
+Download VIF-Bench by
+
+```
+hf download shim0114/VIF-Bench --repo-type dataset --local-dir ./data
 ```
 
 ## 🛠️ Setup
@@ -123,8 +73,7 @@ conda activate vifbench
 pip install -r requirements.txt
 ```
 
-API keys are needed for the API image models and the GPT-5 / Gemini judges. Copy `.env.example` to
-`.env` and set your own keys (`.env` is git-ignored; never commit it):
+Please set your API keys in `.env` as follows (see `.env.example`).
 
 ```
 OPENAI_API_KEY=...
@@ -133,89 +82,71 @@ GEMINI_API_KEY=...
 
 ## 🎨 Generation
 
-Generate with the API models evaluated in the paper (`gemini-3-pro-image-preview`,
-`gemini-3.1-flash-image-preview`, `gpt-image-1.5`, `gpt-image-1`):
+We provide a generation script for the API models evaluated in the paper
+(`nano_banana_pro`, `nano_banana`, `gpt_image_1_5`, `gpt_image_1`).
 
 ```bash
-python generate.py --data_dir ./data --model nano_banana_pro   # or nano_banana, gpt_image_1_5, gpt_image_1
-```
-
-Outputs are saved as `generations/<model>/<task_id>.png`. To evaluate your own model, save its
-outputs in the same layout, e.g.:
-
-```python
-from common import load_tasks
-
-for task in load_tasks("./data"):
-    output = your_model(task["images"], task["instruction"])
-    output.save(f"generations/my_model/{task['id']}.png")      # task['id'] = "v6_n2_00"
+python generate.py --data_dir ./data --model nano_banana_pro
 ```
 
 ## 🧪 Evaluation
 
+Generated images are expected to be saved as `<task_id>.png`, one directory per model
+(`generate.py` saves them this way).
+
+```
+generations/
+└── nano_banana_pro/
+    ├── v1_000.png
+    ├── v6_n2_00.png
+    └── ...
+```
+
 We use `gpt-5-2025-08-07` via the OpenAI SDK, `gemini-2.5-flash` via the Google GenAI SDK, and
-`Qwen/Qwen3-VL-32B-Instruct` via Hugging Face Transformers. All three judges receive the same
-prompt ([`prompts.py`](prompts.py)).
+`Qwen/Qwen3-VL-32B-Instruct` via Hugging Face Transformers.
 
-The API judges use the keys set in `.env` (see Setup). Run
+Run
 
 ```bash
-# GPT-5
-python judge.py --data_dir ./data --generated_dir ./generations/my_model --judge gpt
+# GPT
+python judge.py --data_dir ./data --generated_dir ./generations/nano_banana_pro --judge gpt
 
-# Gemini 2.5 Flash
-python judge.py --data_dir ./data --generated_dir ./generations/my_model --judge gemini
+# Gemini
+python judge.py --data_dir ./data --generated_dir ./generations/nano_banana_pro --judge gemini
 
-# Qwen3-VL-32B-Instruct (local GPUs, no API key; about 70 GB of GPU memory in bf16)
-python qwenvl_judge.py --data_dir ./data --generated_dir ./generations/my_model
+# Qwen3-VL (local GPUs)
+python qwenvl_judge.py --data_dir ./data --generated_dir ./generations/nano_banana_pro
 ```
 
-Responses are saved to `results/<model_name>/<judge>/responses/<task_id>.txt` and the
-parsed scores to `results/<model_name>/<judge>/scores.jsonl`. Interrupted runs can be resumed by
-running the same command again.
-Qwen3-VL can also be served with an OpenAI-compatible server such as vLLM:
+This will save the judge outputs and scores in `results/<model>/<judge>/`.
+The scores averaged over GPT and Gemini are summarized by the following (`--judges qwen3vl` for Qwen3-VL).
 
 ```bash
-vllm serve Qwen/Qwen3-VL-32B-Instruct --max-model-len 32768
-python qwenvl_judge.py --data_dir ./data --generated_dir ./generations/my_model --api_base http://localhost:8000/v1
-```
-
-Summarize the scores (one row per model under `results/`):
-
-```bash
-# main score: average of GPT-5 and Gemini 2.5 Flash
 python summarize.py --data_dir ./data --results_dir ./results
-
-# Qwen3-VL judge
-python summarize.py --data_dir ./data --results_dir ./results --judges qwen3vl
-
-# per visual-instruction type, and conflict vs. no-conflict tasks
-python summarize.py --data_dir ./data --results_dir ./results --by vi_type
-python summarize.py --data_dir ./data --results_dir ./results --by conflict --metric visual_instruction_adherence
 ```
 
 ## 🏷️ Annotation
 
-**Reference–visual-instruction conflict.** `labels/vi_conflicts.jsonl` marks tasks in which a
-reference image contains a salient state along an attribute that is also controlled by its visual
-instruction (orientation, light, wind or pose). 438 of the 1,241 tasks contain at least one conflict.
-Use `--by conflict` in `summarize.py` to compare conflict and no-conflict tasks.
+The dataset released on Hugging Face includes the following annotations:
 
-**Text-converted instructions.** `text_instruction/{dense,medium,sparse}.jsonl` convert every visual
-instruction into text at three levels of specificity; the visual-instruction images are removed and
-the remaining references are renumbered (`images` lists them in their new order). Generate from them with
-`python generate.py --data_dir ./data --model <model> --instruction dense` (or `medium` / `sparse`) and evaluate the
-outputs exactly as above: the judge always compares against the original visual-instruction task. The paper uses the 200 tasks marked
-`in_vi_vs_ti_experiment` (`--subset vi_vs_ti`).
+**Reference–Visual Instruction Conflict**
 
-**Source of reference images.** Each image entry of `metadata.jsonl` records whether it is a real
-(LAION-5B, DreamOmni2, DreamBooth) or synthetic (Nano Banana / GPT-Image-1) image, and its
-category (Main Reference, Sub Reference or Scene Context).
+`labels/vi_conflicts.jsonl` marks tasks in which a reference image potentially competes with its
+visual instruction. `summarize.py --by conflict` compares tasks with and without conflicts.
+
+**Text-Converted Instructions**
+
+`text_instruction/` contains the visual instructions converted into text at three levels of detail
+(dense, medium and sparse). `generate.py --instruction dense` generates images from them.
+
+**Source of Reference Images**
+
+The `source_type` field of each image in `metadata.jsonl` indicates whether the reference image
+originates from a real dataset or was synthetically generated.
 
 ## 📄 License
 
-This repository and the VIF-Bench dataset are released under the
-[Creative Commons Attribution-NonCommercial 4.0 International](LICENSE) license (CC BY-NC 4.0).
+Creative Commons Attribution Non Commercial 4.0 ([LICENSE](LICENSE))
 
 ## 🙏 Acknowledgement
 
