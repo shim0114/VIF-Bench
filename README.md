@@ -218,7 +218,7 @@ This repository and the VIF-Bench dataset are released under the
 
 VIF-Bench incorporates images from [LAION-5B](https://laion.ai/blog/laion-5b/),
 [DreamOmni2](https://github.com/dvlab-research/DreamOmni2), [DreamBooth](https://dreambooth.github.io/),
-VIBE and [MultiBanana](https://github.com/matsuolab/multibanana).
+[VIBE](https://github.com/hwanyu112/VIBE-Benchmark) and [MultiBanana](https://github.com/matsuolab/multibanana).
 We thank the authors of these datasets for making them openly available.
 Our evaluation framework relies on [Qwen3-VL](https://github.com/QwenLM/Qwen3-VL) as a fixed,
 open-weight judge model, and we are grateful to the Qwen team.
