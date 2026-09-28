@@ -125,8 +125,7 @@ pip install -r requirements.txt
 
 ## 🎨 Generation
 
-For each task, give your model the images `Image_0 ... Image_N` (the `images` list of
-`metadata.jsonl`, in order) together with the text instruction, and save the output as
+For each task, give your model the task images and the text instruction, and save the output as
 `generations/<model_name>/<task_id>.png` (e.g. `generations/my_model/v6_n2_00.png`).
 
 ```python
@@ -134,7 +133,7 @@ import json
 
 for line in open("data/metadata.jsonl"):
     task = json.loads(line)
-    images = [f"data/{im['file']}" for im in task["images"]]   # Image_0, Image_1, ... in order
+    images = [f"data/{im['file']}" for im in task["images"]]   # Image_0, Image_1, ...
     instruction = task["instruction"]
     # output = your_model(images, instruction)
     # output.save(f"generations/my_model/{task['id']}.png")      # task['id'] = "v6_n2_00"
