@@ -15,7 +15,7 @@
 </p>
 
 <p align="center">
-  <img src="assets/teaser.png" alt="VIF-Bench overview" width="800">
+  <img src="assets/task_example.png" alt="VIF-Bench task examples" width="800">
 </p>
 
 Recent image generation models can take multiple images and textual instructions as input,
