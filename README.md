@@ -151,8 +151,8 @@ Creative Commons Attribution Non Commercial 4.0 ([LICENSE](LICENSE))
 ## 🙏 Acknowledgement
 
 VIF-Bench incorporates images from [LAION-5B](https://laion.ai/blog/laion-5b/),
-[DreamOmni2](https://github.com/dvlab-research/DreamOmni2), [DreamBooth](https://dreambooth.github.io/),
-[VIBE](https://github.com/hwanyu112/VIBE-Benchmark) and [MultiBanana](https://github.com/matsuolab/multibanana).
+[DreamOmni2](https://github.com/dvlab-research/DreamOmni2), [DreamBooth](https://dreambooth.github.io/)
+and [VIBE](https://github.com/hwanyu112/VIBE-Benchmark).
 We thank the authors of these datasets for making them openly available.
 Our evaluation framework relies on [Qwen3-VL](https://github.com/QwenLM/Qwen3-VL) as a fixed,
 open-weight judge model, and we are grateful to the Qwen team.
