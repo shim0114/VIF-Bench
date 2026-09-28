@@ -88,8 +88,11 @@ generator is called once per sub-task. Bold marks the best score in each column.
 Download the dataset from [Hugging Face](https://huggingface.co/datasets/shim0114/VIF-Bench):
 
 ```bash
-git clone https://huggingface.co/datasets/shim0114/VIF-Bench ./data
+hf download shim0114/VIF-Bench --repo-type dataset --local-dir ./data
 ```
+
+(`hf` is the Hugging Face CLI installed with `huggingface_hub`. `git clone` also works if
+[Git LFS](https://git-lfs.com) is installed; without it the images are downloaded as LFS pointer files.)
 
 ```
 data/

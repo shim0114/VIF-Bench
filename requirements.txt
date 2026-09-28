@@ -1,4 +1,5 @@
 google-genai
+huggingface_hub
 openai
 pillow
 python-dotenv
