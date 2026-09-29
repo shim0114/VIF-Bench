@@ -14,6 +14,22 @@
     </a>
 </p>
 
+<details open><summary>💡 We also have other multi-reference image generation projects that may interest you ✨</summary><p>
+
+> [**MultiBanana: A Challenging Benchmark for Multi-Reference Text-to-Image Generation**](https://arxiv.org/abs/2511.22989) <br>
+> **CVPR 2026 (Main)** <br>
+> Yuta Oshima, Daiki Miyake, Kohsei Matsutani, Yusuke Iwasawa, Masahiro Suzuki, Yutaka Matsuo, Hiroki Furuta <br>
+> [![CVPR 2026](https://img.shields.io/badge/CVPR-2026-blue)](https://cvpr.thecvf.com/)
+> [![github](https://img.shields.io/badge/-Github-black?logo=github)](https://github.com/matsuolab/multibanana)
+> [![github](https://img.shields.io/github/stars/matsuolab/multibanana.svg?style=social)](https://github.com/matsuolab/multibanana)
+> [![arXiv](https://img.shields.io/badge/Arxiv-2511.22989-b31b1b.svg?logo=arXiv)](https://arxiv.org/abs/2511.22989) <br>
+
+> [**AutoRef: Harness Optimization for Agentic Multi-Reference Image Generation**](https://arxiv.org/abs/2609.35530) <br>
+> Yuta Oshima, Ku Onoda, Yusuke Iwasawa, Masahiro Suzuki, Yutaka Matsuo, Hiroki Furuta <br>
+> [![arXiv](https://img.shields.io/badge/Arxiv-2609.35530-b31b1b.svg?logo=arXiv)](https://arxiv.org/abs/2609.35530) <br>
+
+</p></details>
+
 <p align="center">
   <img src="assets/task_example.png" alt="Task Example" width="800">
 </p>
@@ -165,5 +181,24 @@ and [DreamOmni2](https://github.com/dvlab-research/DreamOmni2).
 ## 🌟 Citation
 
 ```bibtex
+
+@inproceedings{oshima2026multibanana,
+    author    = {Oshima, Yuta and Miyake, Daiki and Matsutani, Kohsei and Iwasawa, Yusuke and Suzuki, Masahiro and Matsuo, Yutaka and Furuta, Hiroki},
+    title     = {MultiBanana: A Challenging Benchmark for Multi-Reference Text-to-Image Generation},
+    booktitle = {Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR)},
+    month     = {June},
+    year      = {2026},
+    pages     = {448-460}
+}
+
+@misc{oshima2026autoref,
+      title={AutoRef: Harness Optimization for Agentic Multi-Reference Image Generation}, 
+      author={Yuta Oshima and Ku Onoda and Yusuke Iwasawa and Masahiro Suzuki and Yutaka Matsuo and Hiroki Furuta},
+      year={2026},
+      eprint={2609.35530},
+      archivePrefix={arXiv},
+      primaryClass={cs.CV},
+      url={https://arxiv.org/abs/2609.35530}, 
+}
 
 ```
