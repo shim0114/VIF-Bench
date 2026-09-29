@@ -2,7 +2,7 @@
 
 <p align="center">
     <b>Yuta Oshima*, Masakazu Yoshimura*, Masahiro Suzuki, Yutaka Matsuo, Hiroki Furuta</b><br>
-    The University of Tokyo &nbsp;&nbsp; (*equal contribution)
+    (*equal contribution)
 </p>
 
 <p align="center">
