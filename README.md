@@ -6,8 +6,8 @@
 </p>
 
 <p align="center">
-    <a href="#">
-      <img alt="arXiv paper" src="https://img.shields.io/badge/arXiv-coming%20soon-b31b1b.svg">
+    <a href="https://arxiv.org/abs/2609.37709">
+      <img alt="arXiv paper" src="https://img.shields.io/badge/arXiv-2609.37709-b31b1b.svg">
     </a>
     <a href="https://huggingface.co/datasets/shim0114/VIF-Bench">
         <img alt="Dataset" src="https://img.shields.io/badge/🤗 Dataset-VIF--Bench-yellow.svg">
@@ -183,6 +183,16 @@ and [DreamOmni2](https://github.com/dvlab-research/DreamOmni2).
 ## 🌟 Citation
 
 ```bibtex
+
+@misc{oshima2026vifbench,
+      title={VIF-Bench: Evaluating Visual Instruction Following in Multi-Reference Image Generation}, 
+      author={Yuta Oshima and Masakazu Yoshimura and Masahiro Suzuki and Yutaka Matsuo and Hiroki Furuta},
+      year={2026},
+      eprint={2609.37709},
+      archivePrefix={arXiv},
+      primaryClass={cs.CV},
+      url={https://arxiv.org/abs/2609.37709}, 
+}
 
 @inproceedings{oshima2026multibanana,
     author    = {Oshima, Yuta and Miyake, Daiki and Matsutani, Kohsei and Iwasawa, Yusuke and Suzuki, Masahiro and Matsuo, Yutaka and Furuta, Hiroki},
